@@ -1,0 +1,201 @@
+.motivation-container {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .intro-section {
+    background: url('../assets/getstart.jpg') no-repeat center center;
+    background-size: cover;
+    color: #fff;
+    padding: 80px 20px;
+    text-align: center;
+  }
+  
+  .intro-section h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+  
+  .intro-section p {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+  
+  .cta-button {
+    background-color: #ffcc00;
+    color: #333;
+    padding: 15px 30px;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    background-color: #ff9900;
+  }
+  
+  .quote-section {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .quote-section h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+  
+  blockquote {
+    font-size: 24px;
+    font-style: italic;
+    margin: 20px auto;
+    max-width: 600px;
+    color: #666;
+  }
+  
+  blockquote cite {
+    display: block;
+    margin-top: 10px;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .techniques-section {
+    padding: 40px 20px;
+    background-color: #fff;
+    text-align: center;
+  }
+  
+  .techniques-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .technique-card {
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 300px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .technique-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .technique-card h3 {
+    margin-top: 15px;
+    font-size: 20px;
+    color: #0056b3;
+  }
+  
+  .technique-card p {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .video-section {
+    padding: 40px 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+  }
+  
+  .video-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .learning-video {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 10px;
+  }
+/*   
+  .gallery-section {
+    padding: 40px 20px;
+    background-color: #fff;
+    text-align: center;
+  }
+  
+  .gallery-section h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+  
+  .gallery-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .gallery-grid img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+  } */
+
+  .gallery-section {
+    padding: 40px 20px;
+    background-color: #fff;
+    text-align: center;
+  }
+  
+  .gallery-section h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+  
+  .gallery-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .gallery-item {
+    position: relative;
+    width: 300px;
+  }
+  
+  .gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .gallery-item h2 {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgb(233, 233, 233);
+    font-size: 20px;
+    
+    padding: 5px 10px;
+    border-radius: 5px;
+    width: 90%;
+    text-align: center;
+  }
+  
+
+  .footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  

@@ -1,0 +1,21 @@
+.student-progress-container {
+    padding: 20px;
+  }
+  
+  .progress-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .progress-item {
+    background-color: #f5f5f5;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .error {
+    color: red;
+    font-weight: bold;
+  }
+  
