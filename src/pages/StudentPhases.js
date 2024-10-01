@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Navbar from './Navbar';
 import '../styles/studentPhases.css';
 
 const StudentPhases = ({ studentId }) => {
@@ -67,6 +68,10 @@ const StudentPhases = ({ studentId }) => {
 
   return (
     <div className="student-phases-container">
+  <div>
+    <Navbar/>
+  </div>
+      
       <h2>Select a Phase</h2>
       <div className="phases-list">
         {phases.length > 0 ? (

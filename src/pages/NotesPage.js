@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import '../styles/notesPage.css';
+import Navbar from './Navbar';
 
 const NotesPage = () => {
   const [languages, setLanguages] = useState([]);
@@ -34,8 +35,14 @@ const NotesPage = () => {
   };
 
   return (
+    <>
+    <div>
+      <Navbar/>
+    </div>
     <div className="notes-page-container">
+     
       <div className="sidebar">
+     
         <h2 className="sidebar-title">Select Language</h2>
         <select 
           className="language-select" 
@@ -58,7 +65,7 @@ const NotesPage = () => {
                 className={`title-item ${selectedNote && selectedNote._id === note._id ? 'active' : ''}`} 
                 onClick={() => handleTitleClick(note)}
               >
-                {note.title}
+                {note.title}  
               </li>
             ))
           ) : (
@@ -81,6 +88,7 @@ const NotesPage = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 

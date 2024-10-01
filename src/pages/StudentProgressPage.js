@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Navbar from './Navbar';
 import '../styles/studentProgress.css';
 
 const StudentProgress = () => {
@@ -53,6 +54,9 @@ const StudentProgress = () => {
 
   return (
     <div className="student-progress-container">
+      <div>
+        <Navbar/>
+      </div>
       <h2>Your Progress</h2>
       {progress && progress.length > 0 ? (
         <div>

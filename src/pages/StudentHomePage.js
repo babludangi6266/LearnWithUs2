@@ -2,11 +2,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/studentHomePage.css';
+import Navbar from './Navbar';
 
 const StudentHomePage = () => {
   return (
     <div className="student-home-container">
-      <header className="student-header">
+      {/* <header className="student-header">
         <nav className="navbar">
           <div className="navbar-logo">
             <h1>Student Portal</h1>
@@ -18,6 +19,9 @@ const StudentHomePage = () => {
             <li><Link to="/Feedback" className="student-link">View Feedback</Link></li>
           </ul>
         </nav>
+      </header> */}
+<header className="student-header">
+        <Navbar/>
       </header>
 
       {/* Background slideshow with quote */}

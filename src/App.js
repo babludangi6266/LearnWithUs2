@@ -16,6 +16,7 @@ import ManageQuestions from './pages/ManageQuestions';
 import ViewStudents from './pages/ViewStudents';
 import StudentPhases from './pages/StudentPhases'; 
 import GetStartPage from './pages/GetStartPage'; 
+import Loader from './pages/Loader'; 
 
 import QuestionAnswers from './pages/StudentQueAns';
 import NotesPage from './pages/NotesPage';
@@ -24,6 +25,7 @@ function App() {
   return (
     <Router>
       <Routes>
+        <Route exact path="/Loader" element={<Loader />} />
         <Route exact path="/" element={<HomePage />} />
         <Route path="/student-home" element={<StudentHomePage />} />
         <Route path="/admin-dashboard" element={<AdminHomePage />} />
