@@ -1,5 +1,5 @@
-
-import React from 'react';
+import React ,{ useState, useEffect } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../styles/studentHomePage.css';
 import Navbar from './Navbar';
@@ -7,21 +7,8 @@ import Navbar from './Navbar';
 const StudentHomePage = () => {
   return (
     <div className="student-home-container">
-      {/* <header className="student-header">
-        <nav className="navbar">
-          <div className="navbar-logo">
-            <h1>Student Portal</h1>
-          </div>
-          <ul className="navbar-links">
-            <li><Link to="/StudentPhases" className="student-link">Phases</Link></li>
-            <li><Link to="/NotesPage" className="student-link">Notes</Link></li>
-            <li><Link to="/StudentProgressPage" className="student-link">Track Progress</Link></li>             
-            <li><Link to="/Feedback" className="student-link">View Feedback</Link></li>
-          </ul>
-        </nav>
-      </header> */}
-<header className="student-header">
-        <Navbar/>
+      <header className="student-header">
+        <Navbar />
       </header>
 
       {/* Background slideshow with quote */}
@@ -32,13 +19,12 @@ const StudentHomePage = () => {
         {/* More images can be added similarly */}
         <div className="quote-container">
           <blockquote className="quote-text">
-            "It is no exaggeration to regard this as the most fundamental idea in programming: The evaluator, which determines the meaning of expressions in a programming language, is just another program. To appreciate this point is to change our images of ourselves as programmers. We come to see ourselves as designers of languages, rather than only users of languages designed by others. In fact, we can regard almost any program as the evaluator for some language."
-            <span className="quote-author">— Gerald Jay Sussman and Hal Abelson</span>
+            "The best way to predict the future is to invent it."
+            <span className="quote-author">— Alan Kay</span>
           </blockquote>
         </div>
       </div>
 
-      {/* Content below the slideshow */}
       <section className="content-section">
         <h2>Discover the Future of Tech</h2>
         <div className="grid-layout">
@@ -49,16 +35,48 @@ const StudentHomePage = () => {
           <div className="grid-item">
             <h3>Data Science</h3>
             <p>Analyze and visualize large data sets. Create projects to solve complex problems using predictive analytics.</p>
+          
           </div>
           <div className="grid-item">
             <h3>Blockchain</h3>
             <p>Understand how blockchain is revolutionizing secure, decentralized systems and start building DApps and smart contracts.</p>
+          
           </div>
           <div className="grid-item">
             <h3>Cryptocurrency</h3>
             <p>Dive into the world of digital currencies and develop projects like cryptocurrency wallets or trading platforms.</p>
+           
           </div>
         </div>
+      </section>
+
+      {/* Featured projects section */}
+      <section className="featured-projects-section">
+        <h2>Featured Projects</h2>
+        <div className="project-grid-layout">
+          <div className="project-grid-item">
+            <img src={require('../assets/bg1.jpg')} alt="Project 1" />
+            <h3>AI-powered Chatbot</h3>
+            <p>Build a conversational AI chatbot using natural language processing and machine learning.</p>
+          </div>
+          <div className="project-grid-item">
+            <img src={require('../assets/bg2.jpg')} alt="Project 2" />
+            <h3>Blockchain-based Supply Chain Management</h3>
+            <p>Develop a decentralized supply chain management system using blockchain technology.</p>
+          </div>
+          <div className="project-grid-item">
+            <img src={require('../assets/bg3.jpg')} alt="Project 3" />
+            <h3>Machine Learning-based Image Classification</h3>
+            <p>Build a machine learning model to classify images using convolutional neural networks.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Call to action section */}
+      <section className="call-to-action-section">
+        <h2>Get Started with Your Project</h2>
+        <p>Join our community of innovators and start building your project today.</p>
+        <Link to="/get-started" className="get-started-link">Get Started</Link>
       </section>
     </div>
   );

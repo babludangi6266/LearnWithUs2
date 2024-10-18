@@ -12,7 +12,7 @@ const AddNotes = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // await axios.post('http://localhost:5000/api/admin/notes/notes', {
+      // await axios.post('https://learnwithus-f2tz.onrender.com/api/admin/notes/notes', {
       await axios.post('https://learnwithus-f2tz.onrender.com/api/admin/notes/notes', {
         language,
         title,

@@ -7,7 +7,7 @@
     font-family: 'Arial', sans-serif;
 }
 
-/* Header */
+
 .header {
     background-color: #0056b3;
     color: #fff;
@@ -80,7 +80,6 @@
     transform: scale(1.05);
 }
 
-/* Features Section */
 .features {
     background-color: #f4f4f4;
     padding: 40px 20px;
@@ -119,7 +118,7 @@
     color: #666;
 }
 
-/* Testimonials Section */
+
 .testimonials {
     background-color: #fff;
     padding: 40px 20px;
@@ -165,7 +164,6 @@
     color: #666;
 }
 
-/* Courses Section */
 .courses {
     background-color: #e9ecef;
     padding: 40px 20px;
@@ -203,7 +201,7 @@
     font-size: 16px;
     color: #666;
 }
-/* Partner section */
+
 .partner-section {
     padding: 50px;
     background-color: #f9f9f9;
@@ -217,29 +215,28 @@
   }
   
   .partners-scroll-wrapper {
-    overflow-x: scroll; /* Enables horizontal scrolling */
-    white-space: nowrap; /* Prevents line breaks */
+    overflow-x: scroll; 
+    white-space: nowrap; 
     padding-bottom: 20px;
-    scroll-behavior: smooth; /* Smooth scrolling effect */
+    scroll-behavior: smooth; 
     margin-bottom: 20px;
     display: flex;
     justify-content: flex-start;
   
-    /* Hide scrollbar for all browsers */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    
+    scrollbar-width: none; 
+    -ms-overflow-style: none;  
   }
   
   .partners-scroll-wrapper::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
+    display: none; 
   }
-  /* Horizontal flex layout for partner cards */
+
   .partners-grid {
     display: flex;
     gap: 20px;
   }
   
-  /* Partner card styling */
   .partner-card {
     min-width: 250px;
     height: 400px;
@@ -249,7 +246,7 @@
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    display: inline-block; /* Keep the cards inline for horizontal layout */
+    display: inline-block; 
   }
   
   .partner-card:hover {
@@ -280,8 +277,7 @@
     font-size: 1rem;
   }
   
-  
-/* Footer */
+ 
 .footer {
     background-color: #333;
     color: #fff;
@@ -398,7 +394,7 @@
 .card-back p {
   font-size: 16px;
 }
-/* Social Media Buttons */
+
 .social-media-buttons {
   margin-top: 20px;
 }
@@ -472,4 +468,88 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.blog {
+  padding: 40px 20px;
+  background-color: #f7f7f7;
+}
+
+.blog h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.blog ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.blog li {
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.blog li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.blog h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.blog p {
+  font-size: 16px;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .blog li {
+    padding: 10px;
+  }
+  .blog h3 {
+    font-size: 18px;
+  }
+  .blog p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog {
+    padding: 20px 10px;
+  }
+  .blog li {
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  .blog h2 {
+    font-size: 24px;
+  }
+  .blog h3 {
+    font-size: 16px;
+  }
+  .blog p {
+    font-size: 12px;
+  }
+}
+
+.hero {
+  transition: opacity 0.9s ease-in-out; /* Smooth transition for fade effect */
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
 }
