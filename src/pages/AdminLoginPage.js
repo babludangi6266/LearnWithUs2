@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/AdminLoginPage.css';
@@ -34,14 +35,9 @@ const AdminLoginPage = () => {
 
       const data = await response.json();
 
-      // if (response.ok) {
-        
-      //   localStorage.setItem('adminToken', data.token);
-
       if (response.ok) {
-        // Save the JWT token to local storage
         const token = data.token;
-        localStorage.setItem('token', token);  // Save the whole token here
+        localStorage.setItem('token', token);
         navigate('/admin-dashboard');
       } else {
         setError(data.msg);
@@ -64,6 +60,7 @@ const AdminLoginPage = () => {
           name="email" 
           value={loginData.email} 
           onChange={handleChange} 
+          placeholder="Enter your email"
           required 
         />
 
@@ -73,10 +70,11 @@ const AdminLoginPage = () => {
           name="password" 
           value={loginData.password} 
           onChange={handleChange} 
+          placeholder="Enter your password"
           required 
         />
-
-        <button type="submit" className="btn" disabled={loading}>
+       
+        <button type="submit" className="admin-login-button" disabled={loading}>
           {loading ? 'Logging in...' : 'Login'}
         </button>
       </form>

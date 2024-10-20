@@ -124,7 +124,7 @@ const ManagePhases = () => {
     <div>
     <AdminNavbar/>
   </div>
-    <div className="manage-phases-container">
+    <div className="manage-phases-container"> 
      
       <h2>Manage Phases</h2>
       <form onSubmit={handleSubmit}>
