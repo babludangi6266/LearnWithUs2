@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import AdminNavbar from '../pages/AdminNavbar';
+import '../styles/adminHomePage.css';
 import '../styles/manageQuestions.css';
 
 const ManageQuestions = () => {
@@ -61,7 +63,12 @@ const ManageQuestions = () => {
   };
 
   return (
+    <>
+    <div>
+    <AdminNavbar/>
+  </div>
     <div className="manage-questions-container">
+     
       <h2>Manage Questions</h2>
       <form onSubmit={handleSubmit}>
         <label>Select Phase:</label>
@@ -113,6 +120,7 @@ const ManageQuestions = () => {
         <button type="submit" className="btn">Add Question</button>
       </form>
     </div>
+    </>
   );
 };
 

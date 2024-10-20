@@ -1,6 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import AdminNavbar from '../pages/AdminNavbar';
+import '../styles/adminHomePage.css';
+
 import '../styles/managePhases.css';
 
 const ManagePhases = () => {
@@ -117,7 +120,12 @@ const ManagePhases = () => {
   };
 
   return (
+    <>
+    <div>
+    <AdminNavbar/>
+  </div>
     <div className="manage-phases-container">
+     
       <h2>Manage Phases</h2>
       <form onSubmit={handleSubmit}>
         <label>Phase Name:</label>
@@ -214,6 +222,7 @@ const ManagePhases = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

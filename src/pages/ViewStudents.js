@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import AdminNavbar from '../pages/AdminNavbar';
+import '../styles/adminHomePage.css';
 import '../styles/viewStudents.css';
 
 const ViewStudents = () => {
@@ -46,7 +48,12 @@ const ViewStudents = () => {
     }
   };
   return (
+    <>
+    <div>
+    <AdminNavbar/>
+  </div>
     <div className="view-students-container">
+    
       <h2>All Students</h2>
       {students.length > 0 ? (
         <table className="students-table">
@@ -83,6 +90,7 @@ const ViewStudents = () => {
         <p>No students found.</p>
       )}
     </div>
+    </>
   );
 };
 

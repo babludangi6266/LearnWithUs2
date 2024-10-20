@@ -1,6 +1,8 @@
 
 import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
+import AdminNavbar from '../pages/AdminNavbar';
+import '../styles/adminHomePage.css';
 import axios from 'axios';
 import 'react-quill/dist/quill.snow.css';
 
@@ -40,6 +42,9 @@ const AddNotes = () => {
 
   return (
     <div className="add-notes-container">
+      <div>
+        <AdminNavbar/>
+      </div>
       <h2>Add New Note</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
