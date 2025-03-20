@@ -2,11 +2,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSpring, animated } from '@react-spring/web';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import { FaQuoteLeft, FaQuoteRight } from 'react-icons/fa';
+import { FaInstagram, FaWhatsapp, FaTwitter, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css'; 
+import Slider from 'react-slick';
+import Ballpit from './Ballpit';
+import CoursesSection from './CoursesSection';
 import '../styles/main.css';
-
-import { FaInstagram, FaWhatsapp, FaTwitter, FaLinkedin } from 'react-icons/fa';
+import PartnerSection from './PartnerSection';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -38,8 +43,6 @@ const HomePage = () => {
     return () => clearInterval(intervalId);
   }, [heroContent.length]);
 
-
-
   useEffect(() => {
     const partnersWrapper = document.querySelector('.partners-scroll-wrapper');
 
@@ -70,45 +73,27 @@ const HomePage = () => {
       </header>
 
       <main className="main">
-      <animated.section style={fadeStyles} className="hero">
-      <h1>{heroContent[currentIndex].title}</h1>
-      <p>{heroContent[currentIndex].subtitle}</p>
-      <button className="btn-home" onClick={handleGetStarted}>Get Started</button>
-    </animated.section>
+      <section className="hero">
+          {/* Ballpit Overlay */}
+          <div className="ballpit-overlay">
+    <Ballpit
+      count={50}
+      gravity={0.7}
+      friction={0.8}
+      wallBounce={0.95}
+      followCursor={true}
+      colors={['#FF6F61', '#6B5B95', '#88B04B', '#F7CAC9', '#92A8D1', '#955251']} // Add colorful hex codes
+    />
+  </div>
 
-        <section className="features">
-          <h2>Our Features</h2>
-          <div className="features-container">
-            <FeatureCard
-              imgSrc={require('../assets/personalized.jpg')}
-              altText="Secure Learning"
-              title="Secure Learning"
-              description="Our platform ensures a safe and secure learning environment."
-            />
-            <FeatureCard
-              imgSrc={require('../assets/personalized.jpg')}
-              altText="Personalized Learning"
-              title="Personalized Learning"
-              description="Our AI-powered platform provides personalized learning experiences."
-            />
-            <FeatureCard
-              imgSrc={require('../assets/data-insight.jpg')}
-              altText="Data-Driven Insights"
-              title="Data-Driven Insights"
-              description="Get actionable insights to improve learning outcomes."
-            />
-          </div>
-        </section>
-
-        <section className="courses">
-          <h2>Courses We Offer</h2>
-          <ul className="course-list">
-            <CourseCard title="Full-Stack Development" description="Master the art of full-stack development with our comprehensive course." />
-            <CourseCard title="Data Science" description="Learn data science from the ground up with our expert-led curriculum." />
-            <CourseCard title="AI & Machine Learning" description="Dive into the world of AI and ML with hands-on projects and real-world applications." />
-            <CourseCard title="Cloud Computing" description="Gain expertise in cloud technologies with our in-depth cloud computing course." />
-          </ul>
-        </section>
+          {/* Hero Content */}
+          <animated.div style={fadeStyles} className="hero-content">
+            <h1>{heroContent[currentIndex].title}</h1>
+            <p>{heroContent[currentIndex].subtitle}</p>
+            <button className="btn-home" onClick={handleGetStarted}>Get Started</button>
+          </animated.div>
+          </section>
+          <CoursesSection />
 
         <PartnerSection />
 
@@ -120,99 +105,174 @@ const HomePage = () => {
   );
 };
 
-const FeatureCard = ({ imgSrc, altText, title, description }) => (
-  <div className="feature-card">
-    <div className="card-front">
-    <LazyLoadImage
-        alt={altText}
-        src={imgSrc} // use normal <img> attributes as props
-        effect="blur" // This adds a blur effect while loading
-      />
-    </div>
-    <div className="card-back">
-      <h3>{title}</h3>
-      <p>{description}</p>
-    </div>
-  </div>
-);
+// const FeatureCard = ({ imgSrc, altText, title, description }) => (
+//   <div className="feature-card">
+//     <div className="card-front">
+//     <LazyLoadImage
+//         alt={altText}
+//         src={imgSrc} // use normal <img> attributes as props
+//         effect="blur" // This adds a blur effect while loading
+//       />
+//     </div>
+//     <div className="card-back">
+//       <h3>{title}</h3>
+//       <p>{description}</p>
+//     </div>
+//   </div>
+// );
 
-const CourseCard = ({ title, description }) => (
-  <div className="course-we-offer-card">
-    <li>
-      <h3>{title}</h3>
-      <p>{description}</p>
-    </li>
-  </div>
-);
+const TestimonialsSection = () => {
+  const testimonials = [
+    {
+      imgSrc: require('../assets/kerry.jpg'),
+      name: 'Kerry',
+      company: 'Google',
+      experience: '4+ Year Experience',
+      quote: 'LearnWithUs provides an excellent learning experience. Highly recommended!',
+    },
+    {
+      imgSrc: require('../assets/bob.jpg'),
+      name: 'Bob',
+      company: 'Microsoft',
+      experience: '10+ Year Experience',
+      quote: 'The courses are well-structured and the instructors are top-notch.',
+    },
+    {
+      imgSrc: require('../assets/sofia.jpg'),
+      name: 'Sofia',
+      company: 'IBM',
+      experience: '4+ Year Experience',
+      quote: 'I gained practical skills that helped me advance in my career.',
+    },
+    {
+      imgSrc: require('../assets/amy_hirschi.jpg'),
+      name: 'Amy Hirschi',
+      company: 'Amazon',
+      experience: '5+ Year Experience',
+      quote: 'The platform is user-friendly and the content is up-to-date.',
+    },
+    {
+      imgSrc: require('../assets/sofia.jpg'),
+      name: 'Sofia',
+      company: 'Facebook',
+      experience: '3+ Year Experience',
+      quote: 'I highly recommend LearnWithUs for anyone looking to upskill.',
+    },
+  ];
 
-const PartnerSection = () => (
-  <div className="partner-section">
-    <h2>Our Partners</h2>
-    <div className="partners-scroll-wrapper">
-      <div className="partners-grid">
-        <PartnerCard imgSrc={require('../assets/snehil2.jpg')} name="Snehil" experience="5 years" />
-        <PartnerCard imgSrc={require('../assets/dev.jpg')} name="Devendra" experience="7 years at Google (M.Tech BITS Pilani)" />
-        <PartnerCard imgSrc={require('../assets/snehil2.jpg')} name="Bablu" experience="7 years" />
-        <PartnerCard imgSrc={require('../assets/bajrang.jpg')} name="Bajrang" experience="4 years (IBM)" />
+  // Settings for the slider
+  const settings = {
+    dots: true, // Show dots for navigation
+    infinite: true, // Infinite loop
+    speed: 500, // Transition speed
+    slidesToShow: 3, // Number of cards to show at once
+    slidesToScroll: 1, // Number of cards to scroll
+    autoplay: true, // Auto-play the carousel
+    autoplaySpeed: 3000, // Auto-play speed
+    responsive: [
+      {
+        breakpoint: 1024, // Adjust for tablets
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768, // Adjust for mobile
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
+  return (
+    <section className="testimonials">
+      <h2>What Our Users Say</h2>
+      <Slider {...settings}>
+        {testimonials.map((testimonial, index) => (
+          <Testimonial key={index} {...testimonial} />
+        ))}
+      </Slider>
+    </section>
+  );
+};
+
+const Testimonial = ({ imgSrc, name, company, experience, quote }) => (
+  <div className="testimonial-card">
+    <div className="testimonial-content">
+      <FaQuoteLeft className="quote-icon left" />
+      <img src={imgSrc} alt={name} className="testimonial-image" />
+      <p className="testimonial-quote">{quote}</p>
+      <FaQuoteRight className="quote-icon right" />
+      <div className="testimonial-info">
+        <span className="testimonial-name">{name}</span>
+        <span className="testimonial-company">
+          ({experience}) at {company}
+        </span>
       </div>
     </div>
   </div>
 );
 
-const PartnerCard = ({ imgSrc, name, experience }) => (
-  <div className="partner-card">
-    <img src={imgSrc} alt={name} className="partner-photo" />
-    <h3>{name}</h3>
-    <p>Experience: {experience}</p>
-  </div>
-);
+const Footer = () => {
+  return (
+    <footer className="footer">
+      <div className="footer-content">
+        {/* Founder Section */}
+        <div className="founder-section">
+          <img
+            src={require('../assets/bablu.png')}
+            className="founder-photo"
+            alt="Founder Bablu Dangi"
+          />
+          <div className="founder-info">
+            <h3>Bablu Dangi</h3>
+            <p>
+              Bablu Dangi, the visionary founder of LearnWithUs, is a seasoned software developer with over a decade of experience in the tech industry. His passion for education and technology led him to create LearnWithUs, a platform dedicated to making high-quality education accessible to everyone. Bablu believes in the power of technology to transform lives and is committed to empowering learners worldwide.
+            </p>
+          </div>
+        </div>
 
-const TestimonialsSection = () => (
-  <section className="testimonials">
-    <h2>What Our Users Say</h2>
-    <ul>
-      <Testimonial imgSrc={require('../assets/snehil2.jpg')} name="Snehil" company="Google" experience="4+ Year Experience" />
-      <Testimonial imgSrc={require('../assets/snehil.jpg')} name="Devendra" company="Microsoft" experience="10+ Year Experience" />
-      <Testimonial imgSrc={require('../assets/bajrang.jpg')} name="Bajrang" company="IBM" experience="4+ Year Experience" />
-    </ul>
-  </section>
-);
+        {/* Social and Newsletter Section */}
+        <div className="social-newsletter">
+          <h3>Stay Connected</h3>
+          <div className="social-icons">
+            <SocialIcon href="https://www.instagram.com" icon={FaInstagram} />
+            <SocialIcon href="https://wa.me/+916266007182" icon={FaWhatsapp} />
+            <SocialIcon href="https://twitter.com" icon={FaTwitter} />
+            <SocialIcon href="https://linkedin.com/in/bablu-dangi-ba8a01259" icon={FaLinkedin} />
+          </div>
 
-const Testimonial = ({ imgSrc, name, company, experience }) => (
-  <li>
-    <img src={imgSrc} alt={name} />
-    <p>"LearnWithUs provides an excellent learning experience. Highly recommended!"</p>
-    <span>- {name} ({experience}) at {company}</span>
-  </li>
-);
-
-const Footer = () => (
-  <footer className="footer">
-    <div className="footer-content">
-      <div className="founder-section">
-        <img src={require('../assets/bablu.png')} className="founder-photo" alt="Founder Bablu Dangi" />
-        <div className="founder-info">
-          <h3>Bablu Dangi</h3>
-          <p>Our founder Bablu Dangi established this organization with the vision of empowering learners through technology. With a background in Software Development, Bablu is dedicated to improving education accessibility for all.</p>
+          {/* Newsletter Form */}
+          <div className="newsletter">
+            <h3>Subscribe to Our Newsletter</h3>
+            <form className="newsletter-form">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="newsletter-input"
+              />
+              <button type="submit" className="newsletter-button">
+                <FaEnvelope /> Subscribe
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-      <div className="footer-social">
-        <h3>Connect with Us</h3>
-        <div className="social-icons">
-          <SocialIcon href="https://www.instagram.com" icon={FaInstagram} />
-          <SocialIcon href="https://wa.me/+916266007182" icon={FaWhatsapp} />
-          <SocialIcon href="https://twitter.com" icon={FaTwitter} />
-          <SocialIcon href="https://linkedin.com/in/bablu-dangi-ba8a01259" icon={FaLinkedin} />
-        </div>
+
+      {/* Copyright Section */}
+      <div className="copyright">
+        <p>&copy; 2025 LearnWithUs. All rights reserved.</p>
       </div>
-    </div>
-    <p>&copy; 2024 LearnWithUs. All rights reserved.</p>
-  </footer>
-);
+    </footer>
+  );
+};
 
 const SocialIcon = ({ href, icon: Icon }) => (
-  <a href={href} target="_blank" rel="noopener noreferrer">
-    <Icon className="social-icon" />
+  <a href={href} target="_blank" rel="noopener noreferrer" className="social-icon">
+    <Icon />
   </a>
 );
 
