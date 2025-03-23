@@ -104,23 +104,6 @@ const HomePage = () => {
     </div>
   );
 };
-
-// const FeatureCard = ({ imgSrc, altText, title, description }) => (
-//   <div className="feature-card">
-//     <div className="card-front">
-//     <LazyLoadImage
-//         alt={altText}
-//         src={imgSrc} // use normal <img> attributes as props
-//         effect="blur" // This adds a blur effect while loading
-//       />
-//     </div>
-//     <div className="card-back">
-//       <h3>{title}</h3>
-//       <p>{description}</p>
-//     </div>
-//   </div>
-// );
-
 const TestimonialsSection = () => {
   const testimonials = [
     {

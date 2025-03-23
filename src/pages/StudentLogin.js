@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Loader from './Loader';
@@ -12,7 +11,6 @@ const StudentLogin = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const [studentId, setStudentId] = useState(null);
 
   const handleChange = (e) => {
     setLoginData({
@@ -21,14 +19,12 @@ const StudentLogin = () => {
     });
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
   
     try {
-      // const response = await fetch('https://learnwithus-f2tz.onrender.com/api/auth/login', {
       const response = await fetch('https://learnwithus-f2tz.onrender.com/api/auth/login', {
         method: 'POST',
         headers: {
@@ -36,66 +32,71 @@ const StudentLogin = () => {
         },
         body: JSON.stringify(loginData),
       });
-  
+
       const data = await response.json();
-  
+
       if (response.ok) {
-        // Save the JWT token to local storage
-        const token = data.token;
-        localStorage.setItem('token', token);  // Save the whole token here
-  
-        // Redirect to student home
+        localStorage.setItem('token', data.token);
         navigate('/student-home');
       } else {
         setError(data.msg);
       }
     } catch (err) {
-      setError('Server error');
+      setError('Server error. Please try again later.');
     } finally {
       setLoading(false);
     }
   };
-  
-
 
   return (
     <div className="login-main-container">
+      {loading && <Loader />}
       <div className="login-page">
-        <div className="floating-elements">
-          <div className="floating-element"></div>
-          <div className="floating-element"></div>
-        </div>
-        <div className="rotating-background">
-          <div>LearnWith</div>
-          <div>US</div>
-        </div>
-        <div className="login-container">
-          <h2>Student Login</h2>
-          <form onSubmit={handleSubmit}>
-            <label>Email:</label>
-            <input 
-              type="email" 
-              name="email" 
-              value={loginData.email} 
-              onChange={handleChange} 
-              required 
-            />
-            <label>Password:</label>
-            <input 
-              type="password" 
-              name="password" 
-              value={loginData.password} 
-              onChange={handleChange} 
-              required 
-            />
-            <button type="submit" className="btn" disabled={loading}>
-              {loading ?  <Loader /> : 'Login'}
-            </button>
-          </form>
-          {error && <p className="error">{error}</p>}
-          <p className="register-link">
-            Not registered? <Link to="/student-register">Register here</Link>
-          </p>
+        <div className="split-container">
+          <div className="login-image-side">
+            <div className="image-content">
+              <h1>Learn With Us</h1>
+              <p>Unlock your potential with interactive learning experiences</p>
+            </div>
+            <div className="image-overlay"></div>
+          </div>
+          
+          <div className="form-side">
+            <div className="login-container">
+              <h2>Welcome Back! 👋</h2>
+              <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <label>Email:</label>
+                  <input 
+                    type="email" 
+                    name="email" 
+                    value={loginData.email} 
+                    onChange={handleChange} 
+                    placeholder="Enter your email"
+                    required 
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Password:</label>
+                  <input 
+                    type="password" 
+                    name="password" 
+                    value={loginData.password} 
+                    onChange={handleChange} 
+                    placeholder="••••••••"
+                    required 
+                  />
+                </div>
+                <button type="submit" className="btn" disabled={loading}>
+                  {loading ? 'Processing...' : 'Sign In'}
+                </button>
+              </form>
+              {error && <p className="error-message">⚠️ {error}</p>}
+              <p className="register-link">
+                New here? <Link to="/student-register">Create account</Link>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -103,102 +104,3 @@ const StudentLogin = () => {
 };
 
 export default StudentLogin;
-
-// import React, { useState } from 'react';
-// import { Link, useNavigate } from 'react-router-dom';
-// import Loader from './Loader'; // Import the Loader component
-// import '../styles/studentLogin.css';
-
-// const StudentLogin = () => {
-//   const [loginData, setLoginData] = useState({
-//     email: '',
-//     password: ''
-//   });
-//   const [loading, setLoading] = useState(false);
-//   const [error, setError] = useState(null);
-//   const navigate = useNavigate();
-
-//   const handleChange = (e) => {
-//     setLoginData({
-//       ...loginData,
-//       [e.target.name]: e.target.value
-//     });
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     setLoading(true);
-//     setError(null);
-
-//     try {
-//       const response = await fetch('https://learnwithus-f2tz.onrender.com/api/auth/login', {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(loginData),
-//       });
-
-//       const data = await response.json();
-
-//       if (response.ok) {
-//         const token = data.token;
-//         localStorage.setItem('token', token);
-
-//         // Redirect to student home
-//         navigate('/student-home');
-//       } else {
-//         setError(data.msg);
-//       }
-//     } catch (err) {
-//       setError('Server error');
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   return (
-//     <div className="login-main-container">
-//       <div className="login-page">
-//         <div className="floating-elements">
-//           <div className="floating-element"></div>
-//           <div className="floating-element"></div>
-//         </div>
-//         <div className="rotating-background">
-//           <div>LearnWith</div>
-//           <div>US</div>
-//         </div>
-//         <div className="login-container">
-//           <h2>Student Login</h2>
-//           <form onSubmit={handleSubmit}>
-//             <label>Email:</label>
-//             <input 
-//               type="email" 
-//               name="email" 
-//               value={loginData.email} 
-//               onChange={handleChange} 
-//               required 
-//             />
-//             <label>Password:</label>
-//             <input 
-//               type="password" 
-//               name="password" 
-//               value={loginData.password} 
-//               onChange={handleChange} 
-//               required 
-//             />
-//             <button type="submit" className="btn" disabled={loading}>
-//               {loading ? <Loader /> : 'Login'}
-//             </button>
-//           </form>
-//           {error && <p className="error">{error}</p>}
-//           <p className="register-link">
-//             Not registered? <Link to="/student-register">Register here</Link>
-//           </p>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default StudentLogin;
