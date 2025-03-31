@@ -94,12 +94,20 @@ const Footer = () => {
             alt="LearnWithUs" 
             className="brand-logo" 
           />
-          <div className="social-links">
-            <a href="#"><FaInstagram /></a>
-            <a href="#"><FaWhatsapp /></a>
-            <a href="#"><FaTwitter /></a>
-            <a href="#"><FaLinkedin /></a>
-          </div>
+         <div className="social-links">
+  <a href="https://www.instagram.com/bablu_patel__9788" target="_blank" rel="noopener noreferrer">
+    <FaInstagram />
+  </a>
+  <a href="https://wa.me/6266007192" target="_blank" rel="noopener noreferrer">
+    <FaWhatsapp />
+  </a>
+  <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">
+    <FaTwitter />
+  </a>
+  <a href="https://linkedin.com/in/bablu-dangi-ba8a01259" target="_blank" rel="noopener noreferrer">
+    <FaLinkedin />
+  </a>
+</div>
         </div>
 
         {/* Quick Links */}
@@ -107,7 +115,7 @@ const Footer = () => {
           <h4>Quick Links</h4>
           <ul>
             <li>
-              <Link to="/studentlogin" className="nav-link">
+              <Link to="/student-login" className="nav-link">
                 <FaBook className="link-icon" />
                 Courses
               </Link>
