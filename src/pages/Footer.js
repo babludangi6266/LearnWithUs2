@@ -232,9 +232,9 @@ const Footer = () => {
         <div className="contact-section">
           <h4>Contact Us</h4>
           <div className="contact-info">
-            <p><FaMapMarker /> 123 Education Street</p>
-            <p><FaPhone /> +1 (555) 123-4567</p>
-            <p><FaEnvelope /> hello@learnwithus.com</p>
+            <p><FaMapMarker /> 3rd Floor ,Veda Complex Bawarkuaa , Indore</p>
+            <p><FaPhone /> +91(626) 6007182</p>
+            <p><FaEnvelope /> babludangi2024@gmail.com</p>
           </div>
         </div>
 
