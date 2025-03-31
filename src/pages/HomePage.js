@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSpring, animated } from '@react-spring/web';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { FaQuoteLeft, FaQuoteRight } from 'react-icons/fa';
-import { FaInstagram, FaWhatsapp, FaTwitter, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css'; 
 import Slider from 'react-slick';
@@ -12,6 +11,8 @@ import Ballpit from './Ballpit';
 import CoursesSection from './CoursesSection';
 import '../styles/main.css';
 import PartnerSection from './PartnerSection';
+import Footer from './Footer';
+
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -198,65 +199,4 @@ const Testimonial = ({ imgSrc, name, company, experience, quote }) => (
     </div>
   </div>
 );
-
-const Footer = () => {
-  return (
-    <footer className="footer">
-      <div className="footer-content">
-        {/* Founder Section */}
-        <div className="founder-section">
-          <img
-            src={require('../assets/bablu.png')}
-            className="founder-photo"
-            alt="Founder Bablu Dangi"
-          />
-          <div className="founder-info">
-            <h3>Bablu Dangi</h3>
-            <p>
-              Bablu Dangi, the visionary founder of LearnWithUs, is a seasoned software developer with over a decade of experience in the tech industry. His passion for education and technology led him to create LearnWithUs, a platform dedicated to making high-quality education accessible to everyone. Bablu believes in the power of technology to transform lives and is committed to empowering learners worldwide.
-            </p>
-          </div>
-        </div>
-
-        {/* Social and Newsletter Section */}
-        <div className="social-newsletter">
-          <h3>Stay Connected</h3>
-          <div className="social-icons">
-            <SocialIcon href="https://www.instagram.com" icon={FaInstagram} />
-            <SocialIcon href="https://wa.me/+916266007182" icon={FaWhatsapp} />
-            <SocialIcon href="https://twitter.com" icon={FaTwitter} />
-            <SocialIcon href="https://linkedin.com/in/bablu-dangi-ba8a01259" icon={FaLinkedin} />
-          </div>
-
-          {/* Newsletter Form */}
-          <div className="newsletter">
-            <h3>Subscribe to Our Newsletter</h3>
-            <form className="newsletter-form">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="newsletter-input"
-              />
-              <button type="submit" className="newsletter-button">
-                <FaEnvelope /> Subscribe
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-
-      {/* Copyright Section */}
-      <div className="copyright">
-        <p>&copy; 2025 LearnWithUs. All rights reserved.</p>
-      </div>
-    </footer>
-  );
-};
-
-const SocialIcon = ({ href, icon: Icon }) => (
-  <a href={href} target="_blank" rel="noopener noreferrer" className="social-icon">
-    <Icon />
-  </a>
-);
-
 export default HomePage;
