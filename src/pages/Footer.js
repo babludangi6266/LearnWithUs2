@@ -32,7 +32,7 @@ const Footer = () => {
 
   // Define images
   const ceoImage = require('../assets/bablu.png');
-  const brandLogo = require('../assets/learnwithus-logo1.jpg');
+  const brandLogo = require('../assets/learnwithus-logo1-removebg-preview.png');
   
   // Sample blog posts data
   const blogPosts = [
