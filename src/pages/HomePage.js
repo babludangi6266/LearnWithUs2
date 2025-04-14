@@ -64,12 +64,26 @@ const HomePage = () => {
   return (
     <div className="home-container">
       <header className="header">
-        <nav className="nav">
-          <ul>
-            <li><Link to="/student-login" className="nav-link">Student Portal</Link></li>
-            <li><Link to="/AdminLoginPage" className="nav-link">Admin Portal</Link></li>
-          </ul>
-        </nav>
+      <nav className="nav">
+  <ul>
+    <li><Link to="/student-login" className="nav-link">Student Portal</Link></li>
+    <li><Link to="/AdminLoginPage" className="nav-link">Admin Portal</Link></li>
+    {/* Add this new list item for Buy Me A Coffee */}
+    <li>
+    <a 
+  href="https://buymeacoffee.com/babludangi"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <img 
+    src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" 
+    alt="Buy Me A Coffee" 
+    style={{ height: '40px', width: 'auto' }}
+  />
+</a>
+    </li>
+  </ul>
+</nav>
       </header>
 
       <main className="main">
