@@ -70,18 +70,20 @@ const HomePage = () => {
     <li><Link to="/AdminLoginPage" className="nav-link">Admin Portal</Link></li>
     {/* Add this new list item for Buy Me A Coffee */}
     <li>
-    <a 
-  href="https://buymeacoffee.com/babludangi"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  <img 
-    src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" 
-    alt="Buy Me A Coffee" 
-    style={{ height: '40px', width: 'auto' }}
-  />
-</a>
-    </li>
+  <a 
+    href="https://ko-fi.com/babludangi" 
+    target="_blank"
+    rel="noopener noreferrer"
+    className="nav-link kofi-btn"
+  >
+    <img 
+      height="30" 
+      style={{ border: "0px", height: "32px"}} 
+      src="https://storage.ko-fi.com/cdn/kofi2.png?v=3" 
+      alt="Support LearnWithUs" 
+    />
+  </a>
+</li>
   </ul>
 </nav>
       </header>

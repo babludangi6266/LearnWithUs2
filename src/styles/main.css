@@ -6,28 +6,7 @@
     background-color: #fff;
     font-family: 'Arial', sans-serif;
 }
-/* Style for the Support Us button */
-.support-btn {
-  background-color: #FFDD00; /* BMAC's yellow */
-  color: #000 !important;
-  border-radius: 5px;
-  padding: 8px 15px;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  margin-left: 10px; /* Spacing from other links */
-}
 
-.support-btn:hover {
-  background-color: #ffcc00; /* Darker yellow on hover */
-  transform: scale(1.05);
-}
-@media (max-width: 768px) {
-  .support-btn {
-    margin: 10px 0; /* Stack vertically on small screens */
-    display: block;
-    text-align: center;
-  }
-}
 
 
 .header {
