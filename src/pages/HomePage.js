@@ -11,6 +11,7 @@ import CoursesSection from './CoursesSection';
 import '../styles/main.css';
 import PartnerSection from './PartnerSection';
 import Footer from './Footer';
+import WhyChooseUsSection from './WhyChooseUsSection ';
 
 
 const HomePage = () => {
@@ -109,6 +110,7 @@ const HomePage = () => {
             <button className="btn-home" onClick={handleGetStarted}>Get Started</button>
           </animated.div>
           </section>
+          <WhyChooseUsSection/>
           <CoursesSection />
 
         <PartnerSection />
