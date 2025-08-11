@@ -1,202 +1,490 @@
 .motivation-container {
-    font-family: 'Arial', sans-serif;
-    color: #333;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+  font-family: 'Press Start 2P', cursive;
+  color: #ffffff;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #1a1a1a;
+  position: relative;
+  overflow: hidden;
+}
+
+.motivation-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255, 69, 0, 0.2), rgba(0, 255, 127, 0.2));
+  z-index: -1;
+  animation: glitch 5s infinite alternate;
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0.8;
   }
-  
-  .intro-section {
-    background: url('../assets/getstart.jpg') no-repeat center center;
-    background-size: cover;
-    color: #fff;
-    padding: 80px 20px;
-    text-align: center;
-    loading:"lazy";
+  2% {
+    transform: translate(2px, -2px);
+    opacity: 0.6;
   }
-  
-  .intro-section h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
+  4% {
+    transform: translate(-2px, 2px);
+    opacity: 0.8;
   }
-  
-  .intro-section p {
-    font-size: 24px;
-    margin-bottom: 30px;
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.8;
   }
-  
+}
+
+.motivation-carousel {
+  min-height: 100vh;
+}
+
+.motivation-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.section-content {
+  max-width: 1200px;
+  text-align: center;
+}
+
+.motivation-section h2 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #ff4500;
+  text-shadow: 0 0 10px rgba(255, 69, 0, 0.7);
+  margin-bottom: 1.5rem;
+}
+
+.section-description {
+  font-size: 1.4rem;
+  color: #00ff7f;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/* Intro Section */
+.intro-section .section-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+  z-index: -1;
+}
+
+.intro-section .extended-description {
+  font-size: 1.2rem;
+  color: #ffffff;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+.cta-button {
+  background: linear-gradient(135deg, #ff4500, #00ff7f);
+  color: #1a1a1a;
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 255, 127, 0.5);
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(255, 69, 0, 0.7);
+}
+
+.cta-button:focus {
+  outline: 2px solid #00ff7f;
+  outline-offset: 4px;
+}
+
+/* Quote Section */
+.quote-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.quote-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 350px;
+  box-shadow: 0 0 15px rgba(0, 255, 127, 0.3);
+}
+
+.quote-card blockquote {
+  font-size: 1.5rem;
+  font-style: italic;
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+.quote-card cite {
+  display: block;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: #00ff7f;
+}
+
+/* Techniques Section */
+.techniques-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.technique-card {
+  position: relative;
+  height: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.technique-front,
+.technique-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  transition: transform 0.6s ease;
+  border-radius: 8px;
+}
+
+.technique-front {
+  background: rgba(26, 26, 26, 0.9);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.technique-back {
+  background-size: cover;
+  background-position: center;
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.technique-card:hover .technique-front {
+  transform: rotateY(180deg);
+}
+
+.technique-card:hover .technique-back {
+  transform: rotateY(0);
+}
+
+.technique-back-content {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: left;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.technique-front h3,
+.technique-back-content h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ff4500;
+  text-shadow: 0 0 5px rgba(255, 69, 0, 0.5);
+  margin-bottom: 0.75rem;
+}
+
+.technique-front p,
+.technique-back-content p {
+  font-size: 1rem;
+  color: #ffffff;
+  line-height: 1.5;
+}
+
+.technique-steps {
+  list-style: none;
+  padding: 0;
+}
+
+.technique-steps li {
+  font-size: 0.9rem;
+  color: #00ff7f;
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.technique-steps li::before {
+  content: '>>';
+  position: absolute;
+  left: 0;
+  color: #ff4500;
+}
+
+/* Video Section */
+.video-section .learning-video {
+  width: 100%;
+  max-width: 900px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 255, 127, 0.5);
+}
+
+/* Gallery Section */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover .gallery-image {
+  transform: scale(1.2);
+}
+
+.gallery-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.4s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-overlay h3 {
+  font-size: 1.5rem;
+  color: #ff4500;
+  text-shadow: 0 0 5px rgba(255, 69, 0, 0.5);
+  margin-bottom: 0.5rem;
+}
+
+.gallery-overlay p {
+  font-size: 1rem;
+  color: #00ff7f;
+  max-width: 80%;
+}
+
+/* Footer */
+.footer {
+  background: #1a1a1a;
+  color: #00ff7f;
+  padding: 2rem;
+  text-align: center;
+}
+
+.footer p {
+  font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .motivation-section h2 {
+    font-size: 3rem;
+  }
+
+  .section-description {
+    font-size: 1.2rem;
+  }
+
+  .intro-section .extended-description {
+    font-size: 1.1rem;
+  }
+
   .cta-button {
-    background-color: #ffcc00;
-    color: #333;
-    padding: 15px 30px;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
   }
-  
-  .cta-button:hover {
-    background-color: #ff9900;
+
+  .quote-card blockquote {
+    font-size: 1.3rem;
   }
-  
-  .quote-section {
-    text-align: center;
-    padding: 40px 20px;
-    background-color: #f9f9f9;
+
+  .quote-card cite {
+    font-size: 1rem;
   }
-  
-  .quote-section h2 {
-    font-size: 36px;
-    margin-bottom: 30px;
+
+  .video-section .learning-video {
+    max-width: 700px;
   }
-  
-  blockquote {
-    font-size: 24px;
-    font-style: italic;
-    margin: 20px auto;
-    max-width: 600px;
-    color: #666;
+}
+
+@media (max-width: 768px) {
+  .motivation-section {
+    padding: 3rem 1rem;
   }
-  
-  blockquote cite {
-    display: block;
-    margin-top: 10px;
-    font-size: 18px;
-    color: #333;
+
+  .motivation-section h2 {
+    font-size: 2.5rem;
   }
-  
-  .techniques-section {
-    padding: 40px 20px;
-    background-color: #fff;
-    text-align: center;
+
+  .section-description {
+    font-size: 1.1rem;
   }
-  
-  .techniques-grid {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
+
+  .intro-section .extended-description {
+    font-size: 1rem;
   }
-  
+
+  .cta-button {
+    padding: 0.7rem 1.8rem;
+    font-size: 1rem;
+  }
+
+  .quote-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .quote-card {
+    max-width: 100%;
+  }
+
+  .quote-card blockquote {
+    font-size: 1.2rem;
+  }
+
   .technique-card {
-    background-color: #f4f4f4;
-    border-radius: 8px;
-    padding: 20px;
-    max-width: 300px;
-    text-align: left;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 280px;
   }
-  
-  .technique-card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px 8px 0 0;
-  }
-  
-  .technique-card h3 {
-    margin-top: 15px;
-    font-size: 20px;
-    color: #0056b3;
-  }
-  
-  .technique-card p {
-    font-size: 16px;
-    color: #666;
-  }
-  
-  .video-section {
-    padding: 40px 20px;
-    background-color: #f4f4f4;
-    text-align: center;
-  }
-  
-  .video-section h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-  }
-  
-  .learning-video {
-    width: 100%;
-    max-width: 800px;
-    border-radius: 10px;
-  }
-/*   
-  .gallery-section {
-    padding: 40px 20px;
-    background-color: #fff;
-    text-align: center;
-  }
-  
-  .gallery-section h2 {
-    font-size: 36px;
-    margin-bottom: 30px;
-  }
-  
-  .gallery-grid {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  
-  .gallery-grid img {
-    width: 300px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 8px;
-  } */
 
-  .gallery-section {
-    padding: 40px 20px;
-    background-color: #fff;
-    text-align: center;
+  .technique-front h3,
+  .technique-back-content h3 {
+    font-size: 1.4rem;
   }
-  
-  .gallery-section h2 {
-    font-size: 36px;
-    margin-bottom: 30px;
-  }
-  
-  .gallery-grid {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  
-  .gallery-item {
-    position: relative;
-    width: 300px;
-  }
-  
-  .gallery-item img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-  
-  .gallery-item h2 {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: rgb(233, 233, 233);
-    font-size: 20px;
-    
-    padding: 5px 10px;
-    border-radius: 5px;
-    width: 90%;
-    text-align: center;
-  }
-  
 
-  .footer {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
+  .technique-front p,
+  .technique-back-content p {
+    font-size: 0.9rem;
   }
-  
+
+  .technique-steps li {
+    font-size: 0.85rem;
+  }
+
+  .video-section .learning-video {
+    max-width: 500px;
+    height: 280px;
+  }
+
+  .gallery-image {
+    height: 200px;
+  }
+
+  .gallery-overlay h3 {
+    font-size: 1.3rem;
+  }
+
+  .gallery-overlay p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .motivation-section h2 {
+    font-size: 2rem;
+  }
+
+  .section-description {
+    font-size: 1rem;
+  }
+
+  .intro-section .extended-description {
+    font-size: 0.9rem;
+  }
+
+  .cta-button {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .quote-card blockquote {
+    font-size: 1.1rem;
+  }
+
+  .quote-card cite {
+    font-size: 0.9rem;
+  }
+
+  .technique-card {
+    height: 260px;
+  }
+
+  .technique-front h3,
+  .technique-back-content h3 {
+    font-size: 1.2rem;
+  }
+
+  .technique-front p,
+  .technique-back-content p {
+    font-size: 0.85rem;
+  }
+
+  .technique-steps li {
+    font-size: 0.8rem;
+  }
+
+  .video-section .learning-video {
+    max-width: 100%;
+    height: 200px;
+  }
+
+  .gallery-image {
+    height: 180px;
+  }
+
+  .gallery-overlay h3 {
+    font-size: 1.2rem;
+  }
+
+  .gallery-overlay p {
+    font-size: 0.8rem;
+  }
+
+  .footer p {
+    font-size: 0.9rem;
+  }
+}

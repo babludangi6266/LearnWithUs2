@@ -1,127 +1,119 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSpring, animated } from '@react-spring/web';
-import 'react-lazy-load-image-component/src/effects/blur.css';
 import { FaQuoteLeft, FaQuoteRight } from 'react-icons/fa';
 import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css'; 
+import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 import Ballpit from './Ballpit';
 import CoursesSection from './CoursesSection';
-import '../styles/main.css';
 import PartnerSection from './PartnerSection';
 import Footer from './Footer';
-import WhyChooseUsSection from './WhyChooseUsSection ';
 
+import WhyChooseUsSection from './WhyChooseUsSection ';
+import '../styles/main.css';
 
 const HomePage = () => {
   const navigate = useNavigate();
- 
+
   const handleGetStarted = () => {
     navigate('/GetStartPage');
   };
 
   const heroContent = [
-    { title: 'Empowering Education', subtitle: 'Transforming the way you learn' },
-    { title: 'Learn at Your Own Pace', subtitle: 'Flexibility to match your schedule' },
-    { title: 'Enhance Your Skills', subtitle: 'Learn from industry experts' },
+    { title: 'Empowering Education', subtitle: 'Transforming the way you learn', cta: 'Start Learning Now' },
+    { title: 'Learn at Your Own Pace', subtitle: 'Flexibility to match your schedule', cta: 'Explore Courses' },
+    { title: 'Enhance Your Skills', subtitle: 'Learn from industry experts', cta: 'Join Today' },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const fadeStyles = useSpring({
-    opacity: 1,
-    from: { opacity: 0 },
+    from: { opacity: 0, transform: 'translateY(20px)' },
+    to: { opacity: 1, transform: 'translateY(0)' },
     reset: true,
-    reverse: false,
     delay: 200,
+    onRest: () => {
+      setTimeout(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % heroContent.length);
+      }, 4000);
+    },
   });
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % heroContent.length);
-    }, 3000); // Change content every 3 seconds
-
-    return () => clearInterval(intervalId);
-  }, [heroContent.length]);
-
-  useEffect(() => {
     const partnersWrapper = document.querySelector('.partners-scroll-wrapper');
-
     if (partnersWrapper) {
-      partnersWrapper.addEventListener('mousemove', (e) => {
+      const handleMouseMove = (e) => {
         const { clientX } = e;
         const scrollPercentage = clientX / window.innerWidth;
         partnersWrapper.scrollLeft = scrollPercentage * (partnersWrapper.scrollWidth - window.innerWidth);
-      });
-
-      return () => {
-        partnersWrapper.removeEventListener('mousemove', () => {});
       };
+      partnersWrapper.addEventListener('mousemove', handleMouseMove);
+      return () => partnersWrapper.removeEventListener('mousemove', handleMouseMove);
     }
   }, []);
 
-  
-
   return (
-    <div className="home-container">
-      <header className="header">
-      <nav className="nav">
-  <ul>
-    <li><Link to="/student-login" className="nav-link">Student Portal</Link></li>
-    <li><Link to="/AdminLoginPage" className="nav-link">Admin Portal</Link></li>
-    {/* Add this new list item for Buy Me A Coffee */}
-    <li>
-  <a 
-    href="https://ko-fi.com/babludangi" 
-    target="_blank"
-    rel="noopener noreferrer"
-    className="nav-link kofi-btn"
-  >
-    <img 
-      height="30" 
-      style={{ border: "0px", height: "32px"}} 
-      src="https://storage.ko-fi.com/cdn/kofi2.png?v=3" 
-      alt="Support LearnWithUs" 
-    />
-  </a>
-</li>
-  </ul>
-</nav>
+    <div className="home-container" role="main">
+      <header className="header" role="banner">
+        <nav className="nav" aria-label="Main navigation">
+          <ul>
+            <li><Link to="/student-login" className="nav-link" aria-label="Student Portal">Student Portal</Link></li>
+            <li><Link to="/AdminLoginPage" className="nav-link" aria-label="Admin Portal">Admin Portal</Link></li>
+            <li>
+              <a
+                href="https://ko-fi.com/babludangi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-link kofi-btn"
+                aria-label="Support LearnWithUs"
+              >
+                <img
+                  height="32"
+                  style={{ border: '0px' }}
+                  src="https://storage.ko-fi.com/cdn/kofi2.png?v=3"
+                  alt="Support LearnWithUs"
+                />
+              </a>
+            </li>
+          </ul>
+        </nav>
       </header>
 
       <main className="main">
-      <section className="hero">
-          {/* Ballpit Overlay */}
+        <section className="hero" aria-labelledby="hero-title">
           <div className="ballpit-overlay">
-    <Ballpit
-      count={50}
-      gravity={0.7}
-      friction={0.8}
-      wallBounce={0.95}
-      followCursor={true}
-      colors={['#FF6F61', '#6B5B95', '#88B04B', '#F7CAC9', '#92A8D1', '#955251']} // Add colorful hex codes
-    />
-  </div>
-
-          {/* Hero Content */}
+            <Ballpit
+              count={50}
+              gravity={0.7}
+              friction={0.8}
+              wallBounce={0.95}
+              followCursor={true}
+              colors={['#FF6F61', '#6B5B95', '#88B04B', '#F7CAC9', '#92A8D1', '#955251']}
+            />
+          </div>
           <animated.div style={fadeStyles} className="hero-content">
-            <h1>{heroContent[currentIndex].title}</h1>
+            <h1 id="hero-title">{heroContent[currentIndex].title}</h1>
             <p>{heroContent[currentIndex].subtitle}</p>
-            <button className="btn-home" onClick={handleGetStarted}>Get Started</button>
+            <button
+              className="btn-home"
+              onClick={handleGetStarted}
+              aria-label={heroContent[currentIndex].cta}
+            >
+              {heroContent[currentIndex].cta}
+            </button>
           </animated.div>
-          </section>
-          <WhyChooseUsSection/>
-          <CoursesSection />
-
+        </section>
+        <WhyChooseUsSection />
+        <CoursesSection />
         <PartnerSection />
-
         <TestimonialsSection />
-
         <Footer />
       </main>
     </div>
   );
 };
+
 const TestimonialsSection = () => {
   const testimonials = [
     {
@@ -161,36 +153,30 @@ const TestimonialsSection = () => {
     },
   ];
 
-  // Settings for the slider
   const settings = {
-    dots: true, // Show dots for navigation
-    infinite: true, // Infinite loop
-    speed: 500, // Transition speed
-    slidesToShow: 3, // Number of cards to show at once
-    slidesToScroll: 1, // Number of cards to scroll
-    autoplay: true, // Auto-play the carousel
-    autoplaySpeed: 3000, // Auto-play speed
+    dots: true,
+    infinite: true,
+    speed: 600,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3500,
+    pauseOnHover: true,
     responsive: [
       {
-        breakpoint: 1024, // Adjust for tablets
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
+        breakpoint: 1024,
+        settings: { slidesToShow: 2, slidesToScroll: 1 },
       },
       {
-        breakpoint: 768, // Adjust for mobile
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
+        breakpoint: 768,
+        settings: { slidesToShow: 1, slidesToScroll: 1 },
       },
     ],
   };
 
   return (
-    <section className="testimonials">
-      <h2>What Our Users Say</h2>
+    <section className="testimonials" aria-labelledby="testimonials-title">
+      <h2 id="testimonials-title">What Our Users Say</h2>
       <Slider {...settings}>
         {testimonials.map((testimonial, index) => (
           <Testimonial key={index} {...testimonial} />
@@ -203,17 +189,22 @@ const TestimonialsSection = () => {
 const Testimonial = ({ imgSrc, name, company, experience, quote }) => (
   <div className="testimonial-card">
     <div className="testimonial-content">
-      <FaQuoteLeft className="quote-icon left" />
-      <img src={imgSrc} alt={name} className="testimonial-image" />
+      <FaQuoteLeft className="quote-icon left" aria-hidden="true" />
+      <img
+        src={imgSrc}
+        alt={`${name} from ${company}`}
+        className="testimonial-image"
+        loading="lazy"
+      />
       <p className="testimonial-quote">{quote}</p>
-      <FaQuoteRight className="quote-icon right" />
+      <FaQuoteRight className="quote-icon right" aria-hidden="true" />
       <div className="testimonial-info">
         <span className="testimonial-name">{name}</span>
-        <span className="testimonial-company">
-          ({experience}) at {company}
-        </span>
+        <span className="testimonial-company">({experience}) at {company}</span>
       </div>
     </div>
   </div>
 );
+
 export default HomePage;
+

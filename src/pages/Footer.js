@@ -1,13 +1,14 @@
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  FaInstagram, 
-  FaWhatsapp, 
-  FaTwitter, 
-  FaLinkedin, 
-  FaEnvelope, 
-  FaMapMarker, 
-  FaPhone, 
+import {
+  FaInstagram,
+  FaWhatsapp,
+  FaTwitter,
+  FaLinkedin,
+  FaEnvelope,
+  FaMapMarker,
+  FaPhone,
   FaArrowUp,
   FaTimes,
   FaCrown,
@@ -19,44 +20,40 @@ import {
   FaRegSadTear,
   FaPaperPlane,
   FaUser,
-  FaBook
+  FaBook,
 } from 'react-icons/fa';
 import '../styles/footer.css';
 
 const Footer = () => {
-  // State for dropdown toggles
   const [showAbout, setShowAbout] = useState(false);
   const [showBlog, setShowBlog] = useState(false);
   const [showCareers, setShowCareers] = useState(false);
   const [email, setEmail] = useState('');
 
-  // Define images
   const ceoImage = require('../assets/bablu.png');
   const brandLogo = require('../assets/learnwithus-logo1-removebg-preview.png');
-  
-  // Sample blog posts data
+
   const blogPosts = [
     {
-      title: "Top 5 Programming Languages to Learn in 2024",
-      category: "Tech",
-      date: "May 15, 2024",
-      link: "#"
+      title: 'Top 5 Programming Languages to Learn in 2024',
+      category: 'Tech',
+      date: 'May 15, 2024',
+      link: '#',
     },
     {
-      title: "Career Transition Guide: From Non-Tech to Tech",
-      category: "Career",
-      date: "April 28, 2024",
-      link: "#"
+      title: 'Career Transition Guide: From Non-Tech to Tech',
+      category: 'Career',
+      date: 'April 28, 2024',
+      link: '#',
     },
     {
-      title: "Mastering Web Development: Beginner to Pro",
-      category: "Web Dev",
-      date: "April 10, 2024",
-      link: "#"
-    }
+      title: 'Mastering Web Development: Beginner to Pro',
+      category: 'Web Dev',
+      date: 'April 10, 2024',
+      link: '#',
+    },
   ];
 
-  // Toggle functions
   const toggleAbout = (e) => {
     e.preventDefault();
     setShowAbout(!showAbout);
@@ -80,37 +77,56 @@ const Footer = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add subscription logic here
+    alert('Subscribed to newsletter!');
     setEmail('');
   };
 
   return (
-    <footer className="modern-footer">
+    <footer className="modern-footer" role="contentinfo">
       <div className="footer-container">
-        {/* Logo Section */}
         <div className="logo-section">
-          <img 
-            src={brandLogo} 
-            alt="LearnWithUs" 
-            className="brand-logo" 
+          <img
+            src={brandLogo}
+            alt="LearnWithUs Logo"
+            className="brand-logo"
+            loading="lazy"
           />
-         <div className="social-links">
-  <a href="https://www.instagram.com/bablu_patel__9788" target="_blank" rel="noopener noreferrer">
-    <FaInstagram />
-  </a>
-  <a href="https://wa.me/6266007192" target="_blank" rel="noopener noreferrer">
-    <FaWhatsapp />
-  </a>
-  <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">
-    <FaTwitter />
-  </a>
-  <a href="https://linkedin.com/in/bablu-dangi-ba8a01259" target="_blank" rel="noopener noreferrer">
-    <FaLinkedin />
-  </a>
-</div>
+          <div className="social-links" aria-label="Social media links">
+            <a
+              href="https://www.instagram.com/bablu_patel__9788"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow us on Instagram"
+            >
+              <FaInstagram />
+            </a>
+            <a
+              href="https://wa.me/6266007192"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Contact us on WhatsApp"
+            >
+              <FaWhatsapp />
+            </a>
+            <a
+              href="https://twitter.com/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow us on Twitter"
+            >
+              <FaTwitter />
+            </a>
+            <a
+              href="https://linkedin.com/in/bablu-dangi-ba8a01259"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Connect with us on LinkedIn"
+            >
+              <FaLinkedin />
+            </a>
+          </div>
         </div>
 
-        {/* Quick Links */}
         <div className="links-section">
           <h4>Quick Links</h4>
           <ul>
@@ -120,24 +136,37 @@ const Footer = () => {
                 Courses
               </Link>
             </li>
-
-            {/* About Us Dropdown */}
             <li className="dropdown-container">
-              <a href="#!" className="nav-link" onClick={toggleAbout}>
+              <a
+                href="#!"
+                className="nav-link"
+                onClick={toggleAbout}
+                aria-expanded={showAbout}
+                aria-controls="about-dropdown"
+              >
                 <FaUser className="link-icon" />
                 About Us
               </a>
               {showAbout && (
-                <div className="dropdown-content centered-dropdown">
+                <div id="about-dropdown" className="dropdown-content centered-dropdown">
                   <div className="dropdown-header">
                     <h5>About Our Company</h5>
-                    <button className="close-btn" onClick={() => setShowAbout(false)}>
+                    <button
+                      className="close-btn"
+                      onClick={() => setShowAbout(false)}
+                      aria-label="Close About dropdown"
+                    >
                       <FaTimes />
                     </button>
                   </div>
                   <div className="ceo-card">
                     <div className="ceo-image-container">
-                      <img src={ceoImage} alt="CEO" className="ceo-photo" />
+                      <img
+                        src={ceoImage}
+                        alt="Bablu Dangi, Founder & CEO"
+                        className="ceo-photo"
+                        loading="lazy"
+                      />
                       <div className="ceo-badge">
                         <FaCrown className="crown-icon" />
                       </div>
@@ -158,18 +187,26 @@ const Footer = () => {
                 </div>
               )}
             </li>
-
-            {/* Blog Dropdown */}
             <li className="dropdown-container">
-              <a href="#!" className="nav-link" onClick={toggleBlog}>
+              <a
+                href="#!"
+                className="nav-link"
+                onClick={toggleBlog}
+                aria-expanded={showBlog}
+                aria-controls="blog-dropdown"
+              >
                 <FaBlog className="link-icon" />
                 Blog
               </a>
               {showBlog && (
-                <div className="dropdown-content centered-dropdown blog-dropdown">
+                <div id="blog-dropdown" className="dropdown-content centered-dropdown blog-dropdown">
                   <div className="dropdown-header">
                     <h5>Latest Articles</h5>
-                    <button className="close-btn" onClick={() => setShowBlog(false)}>
+                    <button
+                      className="close-btn"
+                      onClick={() => setShowBlog(false)}
+                      aria-label="Close Blog dropdown"
+                    >
                       <FaTimes />
                     </button>
                   </div>
@@ -190,18 +227,26 @@ const Footer = () => {
                 </div>
               )}
             </li>
-
-            {/* Careers Dropdown */}
             <li className="dropdown-container">
-              <a href="#!" className="nav-link" onClick={toggleCareers}>
+              <a
+                href="#!"
+                className="nav-link"
+                onClick={toggleCareers}
+                aria-expanded={showCareers}
+                aria-controls="careers-dropdown"
+              >
                 <FaUser className="link-icon" />
                 Careers
               </a>
               {showCareers && (
-                <div className="dropdown-content centered-dropdown careers-dropdown">
+                <div id="careers-dropdown" className="dropdown-content centered-dropdown careers-dropdown">
                   <div className="dropdown-header">
                     <h5>Career Opportunities</h5>
-                    <button className="close-btn" onClick={() => setShowCareers(false)}>
+                    <button
+                      className="close-btn"
+                      onClick={() => setShowCareers(false)}
+                      aria-label="Close Careers dropdown"
+                    >
                       <FaTimes />
                     </button>
                   </div>
@@ -218,7 +263,6 @@ const Footer = () => {
                 </div>
               )}
             </li>
-
             <li>
               <Link to="/contact" className="nav-link">
                 <FaEnvelope className="link-icon" />
@@ -228,42 +272,44 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Contact Info */}
         <div className="contact-section">
           <h4>Contact Us</h4>
           <div className="contact-info">
-            <p><FaMapMarker /> 3rd Floor ,Veda Complex Bawarkuaa , Indore</p>
+            <p><FaMapMarker /> 3rd Floor, Veda Complex, Bawarkuaa, Indore</p>
             <p><FaPhone /> +91(626) 6007182</p>
             <p><FaEnvelope /> babludangi2024@gmail.com</p>
           </div>
         </div>
 
-        {/* Newsletter */}
         <div className="newsletter-section">
           <h4>Join Our Newsletter</h4>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} aria-label="Newsletter subscription form">
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               required
+              aria-label="Email address for newsletter"
             />
-            <button type="submit">Subscribe</button>
+            <button type="submit" aria-label="Subscribe to newsletter">Subscribe</button>
           </form>
         </div>
       </div>
 
-      {/* Copyright */}
       <div className="copyright-section">
-        <p>© 2024 LearnWithUs. All rights reserved.</p>
+        <p>© 2025 LearnWithUs. All rights reserved.</p>
         <div className="legal-links">
-          <a href="/privacy">Privacy Policy</a>
-          <a href="/terms">Terms of Service</a>
+          <a href="/privacy" aria-label="Privacy Policy">Privacy Policy</a>
+          <a href="/terms" aria-label="Terms of Service">Terms of Service</a>
         </div>
       </div>
 
-      <button className="scroll-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+      <button
+        className="scroll-top"
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        aria-label="Scroll to top"
+      >
         <FaArrowUp />
       </button>
     </footer>
@@ -271,3 +317,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
