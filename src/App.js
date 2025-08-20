@@ -18,6 +18,8 @@ import StudentPhases from './pages/StudentPhases';
 import GetStartPage from './pages/GetStartPage'; 
 import Loader from './pages/Loader'; 
 
+import MissionariesGame from './pages/MissionariesGame';
+
 import QuestionAnswers from './pages/StudentQueAns';
 import NotesPage from './pages/NotesPage';
 import AddNotes from './pages/AddNotes';
@@ -27,6 +29,8 @@ function App() {
       <Routes>
         <Route exact path="/Loader" element={<Loader />} />
         <Route exact path="/" element={<HomePage />} />
+
+        <Route path="/missionaries-game" element={<MissionariesGame />} />
         <Route path="/student-home" element={<StudentHomePage />} />
         <Route path="/admin-dashboard" element={<AdminHomePage />} />
         <Route path="/student-login" element={<Stulogin />} />
