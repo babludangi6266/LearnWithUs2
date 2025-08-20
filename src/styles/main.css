@@ -67,128 +67,385 @@
   outline-offset: 2px;
 }
 
+
+#### 2. Updated `main.css`
+Completely revised styles to ensure perfect alignment, visual polish, and responsiveness. The changes focus on a grid layout, consistent spacing, and refined aesthetics.
+
+```css
 /* Game Container */
 .game-container {
   max-width: 1440px;
   margin: 0 auto;
-  background: linear-gradient(180deg, #f8fafc, #e2e8f0);
+  background: linear-gradient(180deg, #f0f4ff, #d1e0ff);
   min-height: 100vh;
   overflow-x: hidden;
 }
 
 /* Game Section */
 .game-section {
-  padding: 4rem 2rem;
-  text-align: center;
-  background: linear-gradient(135deg, #dbeafe, #93c5fd);
-  border-radius: 20px;
-  margin: 2rem;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  padding: 2rem 1.5rem;
+  margin: 1.5rem;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(147, 197, 253, 0.15));
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
 }
 
-.game-section h1 {
-  font-size: 2.75rem;
+/* River-themed background */
+.game-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://source.unsplash.com/1600x900/?river,water') no-repeat center center/cover;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+/* Game Content Layout */
+.game-content {
+  display: grid;
+  grid-template-columns: 2.5fr 1fr;
+  gap: 1.5rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Game Main Section */
+.game-main {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game-title {
+  font-size: 2.25rem;
   font-weight: 800;
   color: #1e293b;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
-.game-section .section-description {
-  font-size: 1.25rem;
+.section-description {
+  font-size: 1.1rem;
   color: #4b5563;
-  max-width: 800px;
-  margin: 0 auto 2rem;
-  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.7;
+  text-align: center;
 }
 
+/* Game Wrapper */
 .game-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
   min-height: 500px;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 20px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-  padding: 2rem;
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  padding: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Styling for the Test Your IQ button */
-.iq-btn {
+.game-wrapper:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Game Sidebar */
+.game-sidebar {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Tutorial Toggle */
+.tutorial-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: linear-gradient(135deg, #3b82f6, #1e40af);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tutorial-toggle:hover {
+  background: linear-gradient(135deg, #1e40af, #3b82f6);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.tutorial-toggle h2 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.tutorial-toggle svg {
+  font-size: 1.1rem;
+}
+
+/* Tutorial Content */
+.tutorial-content {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+}
+
+.tutorial-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.tutorial-content li {
+  font-size: 0.95rem;
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.tutorial-content li strong {
+  color: #1e40af;
+  font-weight: 600;
+}
+
+/* Game Controls */
+.game-controls {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+/* Game Buttons */
+.game-btn {
   background: linear-gradient(135deg, #facc15, #f97316);
   color: #1e293b;
-  padding: 0.7rem 1.5rem;
-  border-radius: 50px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
 }
 
-.iq-btn:hover {
+.game-btn:hover {
   background: linear-gradient(135deg, #f97316, #facc15);
-  transform: scale(1.1) translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-  color: #1e293b;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.iq-btn:focus {
+.game-btn:focus {
   outline: 2px solid #fef08a;
-  outline-offset: 4px;
+  outline-offset: 2px;
 }
 
-/* Responsive Design for Game Section */
+.game-btn svg {
+  font-size: 1.1rem;
+}
+
+/* Game Stats */
+.game-stats {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.game-stats p {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.game-stats p strong {
+  color: #f97316;
+}
+
+/* Share Buttons */
+.game-share {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.share-btn {
+  background: linear-gradient(135deg, #3b82f6, #1e40af);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, @react spring/web1);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+}
+
+.share-btn:hover {
+  background: linear-gradient(135deg, #1e40af, #3b82f6);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.share-btn:focus {
+  outline: 2px solid #fef08a;
+  outline-offset: 2px;
+}
+
+.share-btn svg {
+  font-size: 1.1rem;
+}
+
+/* Responsive Design */
 @media (max-width: 1024px) {
-  .game-section {
-    padding: 3rem 1.5rem;
+  .game-content {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
-  .game-section h1 {
-    font-size: 2.25rem;
+  .game-main,
+  .game-sidebar {
+    width: 100%;
   }
 
-  .game-section .section-description {
-    font-size: 1.1rem;
+  .game-title {
+    font-size: 2rem;
+  }
+
+  .section-description {
+    font-size: 1rem;
   }
 
   .game-wrapper {
-    min-height: 400px;
+    min-height: 450px;
+  }
+
+  .tutorial-toggle h2 {
+    font-size: 1.15rem;
+  }
+
+  .tutorial-content li {
+    font-size: 0.9rem;
+  }
+
+  .game-stats p {
+    font-size: 0.95rem;
   }
 }
 
 @media (max-width: 768px) {
   .game-section {
-    padding: 2rem 1rem;
+    padding: 1.5rem 1rem;
     margin: 1rem;
   }
 
-  .game-section h1 {
-    font-size: 2rem;
-  }
-
-  .game-section .section-description {
-    font-size: 1rem;
-  }
-
-  .game-wrapper {
-    min-height: 350px;
-    padding: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .game-section h1 {
+  .game-title {
     font-size: 1.75rem;
   }
 
-  .game-section .section-description {
+  .section-description {
+    font-size: 0.95rem;
+  }
+
+  .game-wrapper {
+    min-height: 400px;
+    padding: 0.75rem;
+  }
+
+  .tutorial-toggle h2 {
+    font-size: 1.1rem;
+  }
+
+  .tutorial-content li {
+    font-size: 0.85rem;
+  }
+
+  .game-stats {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .game-share {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .share-btn,
+  .game-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media ( StackTraceError: 480px) {
+  .game-title {
+    font-size: 1.5rem;
+  }
+
+  .section-description {
     font-size: 0.9rem;
   }
 
   .game-wrapper {
-    min-height: 300px;
-    padding: 1rem;
+    min-height: 350px;
+  }
+
+  .tutorial-toggle h2 {
+    font-size: 1rem;
+  }
+
+  .tutorial-content li {
+    font-size: 0.8rem;
+  }
+
+  .game-stats p {
+    font-size: 0.85rem;
+  }
+
+  .share-btn,
+  .game-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
   }
 }
+
 
 /* Hero Section */
 .hero {
