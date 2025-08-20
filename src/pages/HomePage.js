@@ -62,7 +62,7 @@ const HomePage = () => {
           <ul>
             <li><Link to="/student-login" className="nav-link" aria-label="Student Portal">Student Portal</Link></li>
             <li><Link to="/AdminLoginPage" className="nav-link" aria-label="Admin Portal">Admin Portal</Link></li>
-            <li><Link to="/missionaries-game" className="nav-link iq-btn" aria-label="Test Your IQ">Test Your IQ</Link></li>
+            <li><Link to="/missionaries-game" className="nav-link" aria-label="Test Your IQ">Test Your IQ</Link></li>
             <li>
               <a
                 href="https://ko-fi.com/babludangi"
